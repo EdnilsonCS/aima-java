@@ -503,6 +503,24 @@ public class ProbabilityDemo {
 	}
 
 	public static void demoSoccerProbabilityNONAmericanYoungerLikesSoccerWatchsSportTV(FiniteProbabilityModel model){
+		System.out.println(" non American, Younger than 30, Likes Soccer and Watch TV");
+		System.out.println("----------------------------------");
 		
+		AssignmentProposition nonAmerican = new AssignmentProposition(
+			ExampleRV.AMERICAN_RV, Boolean.FALSE);
+
+		AssignmentProposition aYoungerThan30 = new AssignmentProposition(
+				ExampleRV.AGE_RV, "a1");
+		
+		AssignmentProposition aLikeSoccer = new AssignmentProposition(
+				ExampleRV.LIKES_SOCCER_RV, Boolean.TRUE);	
+		
+		AssignmentProposition aWatchALotTV = new AssignmentProposition(
+					ExampleRV.WATCH_SOME_RV, "lot");
+
+		System.out.println("P<>(nAmerican AND Younger AND aLikeSoccer AND aWatchALotTV) = "
+				+ model.posteriorDistribution(nonAmerican,
+				aYoungerThan30,aLikeSoccer,aWatchALotTV));
+
 	}
 }
