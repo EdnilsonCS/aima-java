@@ -133,6 +133,17 @@ public class ProbabilityDemo {
 		System.out.println("================================");
 	}
 
+	public static void bayesGibbsWorldQuestionA(){
+
+		System.out.println("DEMO: probability we find a non-American who is younger than likes soccer and watches TV N = " + NUM_SAMPLES);
+		System.out.println("=====================");
+    demoSoccerProbabilityNONAmericanYoungerLikesSoccerWatchsSportTV(
+			new FiniteBayesModel(
+				BayesNetExampleFactory.constructToothacheCavityCatchNetwork(),
+				new BayesInferenceApproxAdapter(new GibbsAsk(), NUM_SAMPLES))
+		);
+	}
+
 	public static void bayesGibbsAskDemo() {
 		System.out.println("DEMO: Bayes Gibbs Ask N = " + NUM_SAMPLES);
 		System.out.println("=====================");
@@ -489,5 +500,9 @@ public class ProbabilityDemo {
 		System.out.println("P<>(JohnCalls | Burglary = true) = "
 				+ model.posteriorDistribution(ExampleRV.JOHN_CALLS_RV,
 						aburglary));
+	}
+
+	public static void demoSoccerProbabilityNONAmericanYoungerLikesSoccerWatchsSportTV(FiniteProbabilityModel model){
+		
 	}
 }

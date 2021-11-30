@@ -11,6 +11,23 @@ import aima.core.probability.util.RandVar;
  * @author Ciaran O'Reilly
  */
 public class ExampleRV {
+
+	public static final RandVar AMERICAN_RV = new RandVar("American",
+	 new BooleanDomain());
+
+  public static final RandVar NON_AMERICAN_RV = new RandVar("NON_AMERICAN",
+ 	new BooleanDomain());
+
+  public static final RandVar LIKES_SOCCER_RV = new RandVar("LIKES_SOCCER",
+	new BooleanDomain());
+
+  public static final RandVar AGE_RV = new RandVar("AGE",
+		new ArbitraryTokenDomain("a1", "a2", "a3"));
+
+  public static final RandVar WATCH_SOME_RV = new RandVar("WATCH",
+		new ArbitraryTokenDomain("lot", "some", "none"));		
+
+
 	//
 	public static final RandVar DICE_1_RV = new RandVar("Dice1",
 			new FiniteIntegerDomain(1, 2, 3, 4, 5, 6));
