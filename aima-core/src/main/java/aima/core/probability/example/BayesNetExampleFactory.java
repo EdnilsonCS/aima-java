@@ -22,6 +22,51 @@ public class BayesNetExampleFactory {
 		return new BayesNet(dice1, dice2);
 	}
 
+
+
+	public static BayesianNetwork constructAmericanYoungerCatchLikesSoccerWatchsSportTVNetwork() {
+		FiniteNode age = new FullCPTNode(ExampleRV.AGE_RV, new double[] {
+				0.2, 0.8 });
+
+
+
+				
+		@SuppressWarnings("unused")
+		FiniteNode watch = new FullCPTNode(ExampleRV.WATCH_SOME_RV,
+				new double[] {
+						// A=c1, T=d1
+						0.7,
+						// C=c1, T=d2
+						0.2,
+						// C=c1, T=d3
+						0.1,
+						// C=c2, T=d1
+						0.5,
+						// C=c2, T=d2
+						0.3,
+						// C=c2, T=d3
+						0.2
+
+				}, age);
+		@SuppressWarnings("unused")
+		FiniteNode catchN = new FullCPTNode(ExampleRV.LIKES_SOCCER_RV, new double[] {
+				// C=true, Catch=true
+				0.9,
+				// C=true, Catch=false
+				0.1,
+				// C=false, Catch=true
+				0.2,
+				// C=false, Catch=false
+				0.8 }, age);
+
+		return new BayesNet(age);
+	}
+	
+
+
+
+
+
 	public static BayesianNetwork constructToothacheCavityCatchNetwork() {
 		FiniteNode cavity = new FullCPTNode(ExampleRV.CAVITY_RV, new double[] {
 				0.2, 0.8 });
