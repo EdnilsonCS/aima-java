@@ -64,7 +64,7 @@ public class BayesNetExampleFactory {
 				0.2
 			}, likeSports);
 
-		return new BayesNet(watch);
+		return new BayesNet(age, american);
 	}
 	
 
