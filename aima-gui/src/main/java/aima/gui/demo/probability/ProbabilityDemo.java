@@ -52,24 +52,26 @@ public class ProbabilityDemo {
 
 	public static void main(String[] args) {
 		// Chapter 13
-		fullJointDistributionModelDemo();
+		// fullJointDistributionModelDemo();
 
-		// Chapter 14 - Exact
-		bayesEnumerationAskDemo();
-		bayesEliminationAskDemo();
-		// Chapter 14 - Approx
-		bayesRejectionSamplingDemo();
-		bayesLikelihoodWeightingDemo();
-		bayesGibbsAskDemo();
+		// // Chapter 14 - Exact
+		// bayesEnumerationAskDemo();
+		// bayesEliminationAskDemo();
+		// // Chapter 14 - Approx
+		// bayesRejectionSamplingDemo();
+		// bayesLikelihoodWeightingDemo();
+		// bayesGibbsAskDemo();
 
-		// Chapter 15
-		forwardBackWardDemo();
-		fixedLagSmoothingDemo();
-		particleFilterinfDemo();
+		// // Chapter 15
+		// forwardBackWardDemo();
+		// fixedLagSmoothingDemo();
+		// particleFilterinfDemo();
 
-		// Chapter 17
-		valueIterationDemo();
-		policyIterationDemo();
+		// // Chapter 17
+		// valueIterationDemo();
+		// policyIterationDemo();
+
+		bayesGibbsWorldQuestionA();
 	}
 
 	public static void fullJointDistributionModelDemo() {

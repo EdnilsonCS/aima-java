@@ -25,39 +25,46 @@ public class BayesNetExampleFactory {
 
 
 	public static BayesianNetwork constructAmericanYoungerCatchLikesSoccerWatchsSportTVNetwork() {
+	
 		FiniteNode age = new FullCPTNode(ExampleRV.AGE_RV, new double[] {
-				0.2, 0.8 });
+				0.3, 
+				0.6,
+				0.1 
+			});
 
-
-
-				
+		FiniteNode american = new FullCPTNode(ExampleRV.AMERICAN_RV, new double[] {
+				0.2, 
+				0.8 
+			});
+			
 		@SuppressWarnings("unused")
-		FiniteNode watch = new FullCPTNode(ExampleRV.WATCH_SOME_RV,
+		FiniteNode likeSports = new FullCPTNode(ExampleRV.LIKES_SOCCER_RV,
 				new double[] {
-						// A=c1, T=d1
-						0.7,
-						// C=c1, T=d2
-						0.2,
-						// C=c1, T=d3
-						0.1,
-						// C=c2, T=d1
 						0.5,
-						// C=c2, T=d2
+						0.5,
+						0.7,
 						0.3,
-						// C=c2, T=d3
-						0.2
+						0.6,
+						0.4,
+						0.8,
+						0.2,
+						0.4,
+						0.6,
+						0.1,
+						0.9
+				}, age, american);
 
-				}, age);
 		@SuppressWarnings("unused")
-		FiniteNode catchN = new FullCPTNode(ExampleRV.LIKES_SOCCER_RV, new double[] {
-				// C=true, Catch=true
-				0.9,
-				// C=true, Catch=false
-				0.1,
-				// C=false, Catch=true
+		FiniteNode watch = new FullCPTNode(ExampleRV.WATCH_SOME_RV, new double[] {
+				0.7,
 				0.2,
-				// C=false, Catch=false
-				0.8 }, age);
+				0.1,
+				0.5,
+				0.5,
+				0.3,
+				0.2
+
+			}, likeSports);
 
 		return new BayesNet(age);
 	}
