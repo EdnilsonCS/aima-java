@@ -521,7 +521,7 @@ public class ProbabilityDemo {
 					ExampleRV.WATCH_SOME_RV, "lot");
 
 		System.out.println("P<>(nAmerican AND Younger AND aLikeSoccer AND aWatchALotTV) = "
-				+ model.posteriorDistribution(nonAmerican,
+				+ model.prior(nonAmerican,
 				aYoungerThan30,aLikeSoccer,aWatchALotTV));
 
 	}
