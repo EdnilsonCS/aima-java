@@ -60,13 +60,11 @@ public class BayesNetExampleFactory {
 				0.2,
 				0.1,
 				0.5,
-				0.5,
 				0.3,
 				0.2
-
 			}, likeSports);
 
-		return new BayesNet(age);
+		return new BayesNet(watch);
 	}
 	
 

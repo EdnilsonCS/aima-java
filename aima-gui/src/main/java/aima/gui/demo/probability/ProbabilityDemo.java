@@ -141,7 +141,7 @@ public class ProbabilityDemo {
 		System.out.println("=====================");
     demoSoccerProbabilityNONAmericanYoungerLikesSoccerWatchsSportTV(
 			new FiniteBayesModel(
-				BayesNetExampleFactory.constructToothacheCavityCatchNetwork(),
+				BayesNetExampleFactory.constructAmericanYoungerCatchLikesSoccerWatchsSportTVNetwork(),
 				new BayesInferenceApproxAdapter(new GibbsAsk(), NUM_SAMPLES))
 		);
 	}
