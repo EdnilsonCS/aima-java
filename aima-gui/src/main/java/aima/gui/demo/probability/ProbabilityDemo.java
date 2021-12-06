@@ -72,6 +72,7 @@ public class ProbabilityDemo {
 		// policyIterationDemo();
 
 		bayesGibbsWorldQuestionA();
+		bayeLikelihoodWeightingWorldQuestionA();
 	}
 
 	public static void fullJointDistributionModelDemo() {
@@ -135,10 +136,22 @@ public class ProbabilityDemo {
 		System.out.println("================================");
 	}
 
+	public static void bayeLikelihoodWeightingWorldQuestionA(){
+
+		System.out.println("DEMO: probability we find a non-American who is younger than likes soccer and watches TV N = " + NUM_SAMPLES);
+		System.out.println("=====================LIKELIHOOD===================");
+    demoSoccerProbabilityNONAmericanYoungerLikesSoccerWatchsSportTV(
+			new FiniteBayesModel(
+				BayesNetExampleFactory.constructAmericanYoungerCatchLikesSoccerWatchsSportTVNetwork(),
+				new BayesInferenceApproxAdapter(new LikelihoodWeighting(), NUM_SAMPLES))
+		);
+	}
+
+
 	public static void bayesGibbsWorldQuestionA(){
 
 		System.out.println("DEMO: probability we find a non-American who is younger than likes soccer and watches TV N = " + NUM_SAMPLES);
-		System.out.println("=====================");
+		System.out.println("=====================GIBBS===================");
     demoSoccerProbabilityNONAmericanYoungerLikesSoccerWatchsSportTV(
 			new FiniteBayesModel(
 				BayesNetExampleFactory.constructAmericanYoungerCatchLikesSoccerWatchsSportTVNetwork(),
