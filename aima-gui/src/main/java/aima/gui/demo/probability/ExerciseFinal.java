@@ -14,19 +14,25 @@ public class ExerciseFinal {
 
   public static void main(String[] args) {
 
-
+    System.out.println("-------------------QUESTÃO 1 LETRA A-----------------");
     //Questão A
 		bayesGibbsWorldQuestionA();
-		bayeLikelihoodWeightingWorldQuestionA();
-    
+		bayesLikelihoodWeightingWorldQuestionA();
+    System.out.println("");
+		System.out.println("-------------------QUESTÃO 1 LETRA B-----------------");
 		//Questão B
 		bayesGibbsWorldQuestionB();
     bayesLikelihoodWeightingQuestionB();
+		System.out.println("");
+		System.out.println("-------------------QUESTÃO 1 LETRA C-----------------");
+		//Questão C
+		bayesGibbsWorldQuestionC();
+		bayesLikelihoodWeightingQuestionC();
   }
 
 
 
-  public static void bayeLikelihoodWeightingWorldQuestionA(){
+  public static void bayesLikelihoodWeightingWorldQuestionA(){
 
 		System.out.println("DEMO: probability we find a non-American who is younger than likes soccer and watches TV N = " + NUM_SAMPLES);
 		System.out.println("=====================LIKELIHOOD===================");
@@ -73,6 +79,28 @@ public class ExerciseFinal {
   }
 
 
+	public static void bayesGibbsWorldQuestionC(){
+		System.out.println("DEMO: probability we find a between = " + NUM_SAMPLES);
+		System.out.println("=====================GIBBS===================");
+		System.out.println("P<>(likes and over40yar AND watchesSports)");
+		constructOver40YearsOldWhoNeverWatchsSportsLikesFutebolNetwork(
+			new FiniteBayesModel(
+				BayesNetExampleFactory.constructAmericanYoungerCatchLikesSoccerWatchsSportTVNetwork(),
+				new BayesInferenceApproxAdapter(new GibbsAsk(), NUM_SAMPLES))
+		);
+	}
+
+  public static void bayesLikelihoodWeightingQuestionC(){
+		System.out.println("DEMO: probability we find a between = " + NUM_SAMPLES);
+		System.out.println("=====================LIKELIHOOD===================");
+		System.out.println("P<>(likes | over40yar AND watchesSports)");
+		constructOver40YearsOldWhoNeverWatchsSportsLikesFutebolNetwork(
+			new FiniteBayesModel(
+				BayesNetExampleFactory.constructAmericanYoungerCatchLikesSoccerWatchsSportTVNetwork(),
+				new BayesInferenceApproxAdapter(new LikelihoodWeighting(), NUM_SAMPLES))
+		);
+	}
+
 	public static void demoSoccerProbabilityNONAmericanYoungerLikesSoccerWatchsSportTV(FiniteProbabilityModel model){
 		System.out.println(" non American, Younger than 30, Likes Soccer and Watch TV");
 		System.out.println("----------------------------------");
@@ -113,5 +141,22 @@ public class ExerciseFinal {
     System.out.println("P<>(LIKES = true | American AND younger between 31-40 AND watch tv = some) = "
             + model.prior(aLikeSoccer, american,
             aWatchALotTV,aYoungerThan30 ));        
+	}
+
+	public static void constructOver40YearsOldWhoNeverWatchsSportsLikesFutebolNetwork(FiniteProbabilityModel model){
+		System.out.println("P<>(LIKES = true AND American AND old over 40 AND watch tv = none)");
+	   
+		AssignmentProposition aLikeSoccer = new AssignmentProposition(
+				ExampleRV.LIKES_SOCCER_RV, Boolean.TRUE);	
+
+				AssignmentProposition aYoungerOver40 = new AssignmentProposition(
+					ExampleRV.AGE_RV, "a3");   
+
+    AssignmentProposition noneWatchTV = new AssignmentProposition(
+					ExampleRV.WATCH_SOME_RV, "none");
+
+		System.out.println("P<>(LIKES = true AND American AND old over 40 AND watch tv = none) = "
+					+ model.prior(aLikeSoccer, aYoungerOver40,
+					noneWatchTV )); 
 	}
 }
