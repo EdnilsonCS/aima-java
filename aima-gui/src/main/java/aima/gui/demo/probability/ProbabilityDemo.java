@@ -70,9 +70,9 @@ public class ProbabilityDemo {
 		// // Chapter 17
 		// valueIterationDemo();
 		// policyIterationDemo();
+  
+		
 
-		bayesGibbsWorldQuestionA();
-		bayeLikelihoodWeightingWorldQuestionA();
 	}
 
 	public static void fullJointDistributionModelDemo() {
@@ -136,28 +136,7 @@ public class ProbabilityDemo {
 		System.out.println("================================");
 	}
 
-	public static void bayeLikelihoodWeightingWorldQuestionA(){
 
-		System.out.println("DEMO: probability we find a non-American who is younger than likes soccer and watches TV N = " + NUM_SAMPLES);
-		System.out.println("=====================LIKELIHOOD===================");
-    demoSoccerProbabilityNONAmericanYoungerLikesSoccerWatchsSportTV(
-			new FiniteBayesModel(
-				BayesNetExampleFactory.constructAmericanYoungerCatchLikesSoccerWatchsSportTVNetwork(),
-				new BayesInferenceApproxAdapter(new LikelihoodWeighting(), NUM_SAMPLES))
-		);
-	}
-
-
-	public static void bayesGibbsWorldQuestionA(){
-
-		System.out.println("DEMO: probability we find a non-American who is younger than likes soccer and watches TV N = " + NUM_SAMPLES);
-		System.out.println("=====================GIBBS===================");
-    demoSoccerProbabilityNONAmericanYoungerLikesSoccerWatchsSportTV(
-			new FiniteBayesModel(
-				BayesNetExampleFactory.constructAmericanYoungerCatchLikesSoccerWatchsSportTVNetwork(),
-				new BayesInferenceApproxAdapter(new GibbsAsk(), NUM_SAMPLES))
-		);
-	}
 
 	public static void bayesGibbsAskDemo() {
 		System.out.println("DEMO: Bayes Gibbs Ask N = " + NUM_SAMPLES);
@@ -517,25 +496,5 @@ public class ProbabilityDemo {
 						aburglary));
 	}
 
-	public static void demoSoccerProbabilityNONAmericanYoungerLikesSoccerWatchsSportTV(FiniteProbabilityModel model){
-		System.out.println(" non American, Younger than 30, Likes Soccer and Watch TV");
-		System.out.println("----------------------------------");
-		
-		AssignmentProposition nonAmerican = new AssignmentProposition(
-			ExampleRV.AMERICAN_RV, Boolean.FALSE);
-
-		AssignmentProposition aYoungerThan30 = new AssignmentProposition(
-				ExampleRV.AGE_RV, "a1");
-		
-		AssignmentProposition aLikeSoccer = new AssignmentProposition(
-				ExampleRV.LIKES_SOCCER_RV, Boolean.TRUE);	
-		
-		AssignmentProposition aWatchALotTV = new AssignmentProposition(
-					ExampleRV.WATCH_SOME_RV, "lot");
-
-		System.out.println("P<>(nAmerican AND Younger AND aLikeSoccer AND aWatchALotTV) = "
-				+ model.prior(nonAmerican,
-				aYoungerThan30,aLikeSoccer,aWatchALotTV));
-
-	}
+	
 }
