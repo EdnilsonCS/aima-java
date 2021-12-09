@@ -10,7 +10,7 @@ import aima.core.probability.proposition.AssignmentProposition;
 import aima.core.probability.bayes.approx.LikelihoodWeighting;
 
 public class ExerciseFinal {
-  public static final int NUM_SAMPLES = 10000; 
+  public static final int NUM_SAMPLES = 10000000; 
 
   public static void main(String[] args) {
 
@@ -102,7 +102,7 @@ public class ExerciseFinal {
 	}
 
 	public static void demoSoccerProbabilityNONAmericanYoungerLikesSoccerWatchsSportTV(FiniteProbabilityModel model){
-		System.out.println(" non American, Younger than 30, Likes Soccer and Watch TV");
+		System.out.println(" non American, Younger than 30, Likes Soccer , Watch TV");
 		System.out.println("----------------------------------");
 		
 		AssignmentProposition nonAmerican = new AssignmentProposition(
@@ -139,7 +139,7 @@ public class ExerciseFinal {
             ExampleRV.AGE_RV, "a2");      
     
     System.out.println("P<>(LIKES = true | American AND younger between 31-40 AND watch tv = some) = "
-            + model.prior(aLikeSoccer, american,
+            + model.posterior(aLikeSoccer, american,
             aWatchALotTV,aYoungerThan30 ));        
 	}
 
