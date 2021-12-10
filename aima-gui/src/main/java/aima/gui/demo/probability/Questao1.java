@@ -5,11 +5,11 @@ import aima.core.probability.bayes.approx.BayesInferenceApproxAdapter;
 import aima.core.probability.bayes.approx.GibbsAsk;
 import aima.core.probability.bayes.model.FiniteBayesModel;
 import aima.core.probability.example.BayesNetExampleFactory;
-import aima.core.probability.example.ExampleRV;
+import aima.core.probability.example.ExercicioFinalRV;
 import aima.core.probability.proposition.AssignmentProposition;
 import aima.core.probability.bayes.approx.LikelihoodWeighting;
 
-public class ExerciseFinal {
+public class Questao1 {
   public static final int NUM_SAMPLES = 10000000; 
 
   public static void main(String[] args) {
@@ -106,16 +106,16 @@ public class ExerciseFinal {
 		System.out.println("----------------------------------");
 		
 		AssignmentProposition nonAmerican = new AssignmentProposition(
-			ExampleRV.AMERICAN_RV, Boolean.FALSE);
+			ExercicioFinalRV.AMERICAN_RV, Boolean.FALSE);
 
 		AssignmentProposition aYoungerThan30 = new AssignmentProposition(
-				ExampleRV.AGE_RV, "a1");
+				ExercicioFinalRV.AGE_RV, "a1");
 		
 		AssignmentProposition aLikeSoccer = new AssignmentProposition(
-				ExampleRV.LIKES_SOCCER_RV, Boolean.TRUE);	
+				ExercicioFinalRV.LIKES_SOCCER_RV, Boolean.TRUE);	
 		
 		AssignmentProposition aWatchALotTV = new AssignmentProposition(
-					ExampleRV.WATCH_SOME_RV, "lot");
+					ExercicioFinalRV.WATCH_SOME_RV, "lot");
 
 		System.out.println("P<>(nAmerican, Younger, aLikeSoccer, aWatchALotTV) = "
 				+ model.prior(nonAmerican,
@@ -127,16 +127,16 @@ public class ExerciseFinal {
     System.out.println("P<>(LIKES = true | American AND younger between 31-40 AND watch tv = some)");
     
     AssignmentProposition aLikeSoccer = new AssignmentProposition(
-				ExampleRV.LIKES_SOCCER_RV, Boolean.TRUE);	
+				ExercicioFinalRV.LIKES_SOCCER_RV, Boolean.TRUE);	
 
     AssignmentProposition american = new AssignmentProposition(
-			ExampleRV.AMERICAN_RV, Boolean.TRUE);
+			ExercicioFinalRV.AMERICAN_RV, Boolean.TRUE);
 
     AssignmentProposition aWatchALotTV = new AssignmentProposition(
-					ExampleRV.WATCH_SOME_RV, "some");
+					ExercicioFinalRV.WATCH_SOME_RV, "some");
     
     AssignmentProposition aYoungerThan30 = new AssignmentProposition(
-            ExampleRV.AGE_RV, "a2");      
+            ExercicioFinalRV.AGE_RV, "a2");      
     
     System.out.println("P<>(LIKES = true | American AND younger between 31-40 AND watch tv = some) = "
             + model.posterior(aLikeSoccer, american,
@@ -147,13 +147,13 @@ public class ExerciseFinal {
 		System.out.println("P<>(LIKES = true AND American AND old over 40 AND watch tv = none)");
 	   
 		AssignmentProposition aLikeSoccer = new AssignmentProposition(
-				ExampleRV.LIKES_SOCCER_RV, Boolean.TRUE);	
+				ExercicioFinalRV.LIKES_SOCCER_RV, Boolean.TRUE);	
 
 				AssignmentProposition aYoungerOver40 = new AssignmentProposition(
-					ExampleRV.AGE_RV, "a3");   
+					ExercicioFinalRV.AGE_RV, "a3");   
 
     AssignmentProposition noneWatchTV = new AssignmentProposition(
-					ExampleRV.WATCH_SOME_RV, "none");
+					ExercicioFinalRV.WATCH_SOME_RV, "none");
 
 		System.out.println("P<>(LIKES = true AND American AND old over 40 AND watch tv = none) = "
 					+ model.prior(aLikeSoccer, aYoungerOver40,

@@ -24,21 +24,74 @@ public class BayesNetExampleFactory {
 
 
 
+	public static BayesianNetwork constructBolsaNetwork(){
+		FiniteNode bolsa = new FullCPTNode(ExercicioFinalRV.BOLSA_RV, new double[] {
+			0.11, 
+			0.11,
+			0.11,
+			0.11,
+			0.11,
+			0.11, 
+			0.11,
+			0.11,
+			0.11 
+		});	
+		
+		@SuppressWarnings("unused")
+		FiniteNode rendaFamiliar = new FullCPTNode(ExercicioFinalRV.LIKES_SOCCER_RV,
+		new double[] {
+		  0.01,
+			0.03,
+			0.15,
+			0.20,
+			0.35,
+			0.52,
+			0.65,
+			0.75,
+			0.80,
+			
+			0.29,
+			0.32,
+			0.45,
+			0.50,
+			0.40,
+			0.33,
+			0.25,
+			0.23,
+			0.19,
+
+			0.70,
+			0.65,
+			0.40,
+			0.30,
+			0.25,
+			0.15,
+			0.10,
+			0.02,
+			0.01,
+
+
+		},bolsa);
+
+		return new BayesNet(bolsa);
+	}
+
+
 	public static BayesianNetwork constructAmericanYoungerCatchLikesSoccerWatchsSportTVNetwork() {
 	
-		FiniteNode age = new FullCPTNode(ExampleRV.AGE_RV, new double[] {
+		FiniteNode age = new FullCPTNode(ExercicioFinalRV.AGE_RV, new double[] {
 				0.3, 
 				0.6,
 				0.1 
 			});
 
-		FiniteNode american = new FullCPTNode(ExampleRV.AMERICAN_RV, new double[] {
+		FiniteNode american = new FullCPTNode(ExercicioFinalRV.AMERICAN_RV, new double[] {
 				0.2, 
 				0.8 
 			});
 			
 		@SuppressWarnings("unused")
-		FiniteNode likeSports = new FullCPTNode(ExampleRV.LIKES_SOCCER_RV,
+		FiniteNode likeSports = new FullCPTNode(ExercicioFinalRV.LIKES_SOCCER_RV,
 				new double[] {
 						0.5,
 						0.5,
@@ -55,7 +108,7 @@ public class BayesNetExampleFactory {
 				}, age, american);
 
 		@SuppressWarnings("unused")
-		FiniteNode watch = new FullCPTNode(ExampleRV.WATCH_SOME_RV, new double[] {
+		FiniteNode watch = new FullCPTNode(ExercicioFinalRV.WATCH_SOME_RV, new double[] {
 				0.7,
 				0.2,
 				0.1,
