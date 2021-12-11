@@ -24,7 +24,7 @@ public class ExercicioFinalRV {
 
  // Questão 2
 
- public static final RandVar RENDA_FAMILIAR_RV =  new RandVar("RENDA", 	new ArbitraryTokenDomain("um_sm", "dois_sm", "tres_sm"));
+ public static final RandVar RENDA_FAMILIAR_RV =  new RandVar("RENDA", 	new ArbitraryTokenDomain("1_a_3_sm", "4_a_10_sm", "10_sm"));
 
  public static final RandVar TRABALHA_RV =  new RandVar("WORK", new BooleanDomain());
  
@@ -40,7 +40,7 @@ public class ExercicioFinalRV {
 
  public static final RandVar DOENCA_GRAVE_RV =  new RandVar("DOENCA_GRAVE", new BooleanDomain());
 
- public static final RandVar IMOVEL_RV =  new RandVar("IMOVEL_GRAVE", new BooleanDomain());
+ public static final RandVar IMOVEL_RV =  new RandVar("IMOVEL", new BooleanDomain());
 
  public static final RandVar RESIDE_RV =  new RandVar("RESIDE", new BooleanDomain());
 }

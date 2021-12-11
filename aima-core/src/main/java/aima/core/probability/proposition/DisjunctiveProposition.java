@@ -43,7 +43,14 @@ public class DisjunctiveProposition extends AbstractProposition implements
 		this.right = right;
 	}
 
-	@Override
+	public DisjunctiveProposition(Double probabilidade10eAte3SalarioMinimo, Double probabilidade15eAte3SalarioMinimo,
+      Double probabilidade20eAte3SalarioMinimo, Double probabilidade25eAte3SalarioMinimo,
+      Double probabilidade30eAte3SalarioMinimo, Double probabilidade35eAte3SalarioMinimo,
+      Double probabilidade40eAte3SalarioMinimo, Double probabilidade45eAte3SalarioMinimo,
+      Double probabilidade50eAte3SalarioMinimo) {
+  }
+
+  @Override
 	public boolean holds(Map<RandomVariable, Object> possibleWorld) {
 		return left.holds(possibleWorld) || right.holds(possibleWorld);
 	}
