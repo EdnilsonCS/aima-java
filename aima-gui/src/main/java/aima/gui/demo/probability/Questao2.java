@@ -4,6 +4,7 @@ package aima.gui.demo.probability;
 import aima.core.probability.FiniteProbabilityModel;
 import aima.core.probability.bayes.approx.BayesInferenceApproxAdapter;
 import aima.core.probability.bayes.approx.GibbsAsk;
+import aima.core.probability.bayes.approx.LikelihoodWeighting;
 import aima.core.probability.bayes.model.FiniteBayesModel;
 import aima.core.probability.example.BayesNetExampleFactory;
 import aima.core.probability.example.ExercicioFinalRV;
@@ -18,6 +19,19 @@ public class Questao2 {
 
     bayesGibbsRendaFamiliarIgualA3SalariosMinimos();
     bayesGibbsGanharBolsaSendoEstudanteDoEnsinoMedioEscolaPublica();
+    
+    bayesLikelihoodWeightingRendaFamiliarIgualA3SalariosMinimos();
+    bayesLikelihoodWeightingGanharBolsaSendoEstudanteDoEnsinoMedioEscolaPublica();
+  }
+
+  public static void bayesLikelihoodWeightingRendaFamiliarIgualA3SalariosMinimos(){
+    System.out.println("DEMO: Probabilidade da Renda Familiar ser de um a três salários mínimos: N = " + NUM_SAMPLES);
+		System.out.println("=====================LIKELIHOOD===================");
+    demoBayesGibbsRendaFamiliarIgualA3SalariosMinimos(
+			new FiniteBayesModel(
+				BayesNetExampleFactory.constructBolsaNetwork(),
+				new BayesInferenceApproxAdapter(new LikelihoodWeighting(), NUM_SAMPLES))
+		);
   }
 
   public static void bayesGibbsRendaFamiliarIgualA3SalariosMinimos(){
@@ -31,6 +45,16 @@ public class Questao2 {
 		);
   }
 
+
+  public static void  bayesLikelihoodWeightingGanharBolsaSendoEstudanteDoEnsinoMedioEscolaPublica(){
+    System.out.println("DEMO: Probabilidade de ganhar bolsa sendo que fez ensino médio em escola pública: N = " + NUM_SAMPLES);
+    System.out.println("=====================LIKELIHOOD===================");
+    demoBayesGibbsEstudouEscolaPublica(
+			new FiniteBayesModel(
+				BayesNetExampleFactory.constructBolsaNetwork(),
+				new BayesInferenceApproxAdapter(new LikelihoodWeighting(), NUM_SAMPLES))
+		);
+  }
 
   public static void bayesGibbsGanharBolsaSendoEstudanteDoEnsinoMedioEscolaPublica(){
     System.out.println("DEMO: Probabilidade de ganhar bolsa sendo que fez ensino médio em escola pública: N = " + NUM_SAMPLES);
@@ -76,8 +100,6 @@ public class Questao2 {
      System.out.println("probabilidade de 4 a 10 salarios minimos = " + probabilidadeate10SalarioMinimo);
      System.out.println("probabilidade mais de 10 salarios minimos = " + probabilidademais10SalarioMinimo);
      
-
 	};
-  
 }
 
