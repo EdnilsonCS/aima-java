@@ -20,7 +20,7 @@ public class Questao1 {
 		bayesGibbsWorldQuestionA();
 		bayesLikelihoodWeightingWorldQuestionA();
 		long tempoFinal = System.currentTimeMillis();
-	    System.out.printf("Tempo de Execução ~> %.3f ms%n", (tempoFinal - tempoInicial) / 1000d);
+	    System.out.printf("Tempo de Execuï¿½ï¿½o ~> %.3f ms%n", (tempoFinal - tempoInicial) / 1000d);
     System.out.println("");
 		System.out.println("-------------------QUESTÃƒO 1 LETRA B-----------------");
 		//QuestÃ£o B
@@ -28,7 +28,7 @@ public class Questao1 {
 		bayesGibbsWorldQuestionB();
 		bayesLikelihoodWeightingQuestionB();
 		tempoFinal = System.currentTimeMillis();
-	    System.out.printf("Tempo de Execução ~> %.3f ms%n", (tempoFinal - tempoInicial) / 1000d);
+	    System.out.printf("Tempo de Execuï¿½ï¿½o ~> %.3f ms%n", (tempoFinal - tempoInicial) / 1000d);
 	System.out.println("");
 		System.out.println("-------------------QUESTÃƒO 1 LETRA C-----------------");
 		//QuestÃ£o C
@@ -36,7 +36,7 @@ public class Questao1 {
 		bayesGibbsWorldQuestionC();
 		bayesLikelihoodWeightingQuestionC();
 		tempoFinal = System.currentTimeMillis();
-	    System.out.printf("Tempo de Execução ~> %.3f ms%n", (tempoFinal - tempoInicial) / 1000d);
+	    System.out.printf("Tempo de Execuï¿½ï¿½o ~> %.3f ms%n", (tempoFinal - tempoInicial) / 1000d);
   }
 
 
@@ -91,7 +91,7 @@ public class Questao1 {
 	public static void bayesGibbsWorldQuestionC(){
 		System.out.println("DEMO: probability we find a between = " + NUM_SAMPLES);
 		System.out.println("=====================GIBBS===================");
-		System.out.println("P<>(likes and over40yar AND watchesSports)");
+		System.out.println("P(C = c1 | A = a3, D = d3)");
 		constructOver40YearsOldWhoNeverWatchsSportsLikesFutebolNetwork(
 			new FiniteBayesModel(
 				BayesianFactoryPrimeiraQuestao.constructAmericanYoungerCatchLikesSoccerWatchsSportTVNetwork(),
@@ -132,7 +132,6 @@ public class Questao1 {
 	}
 
   public static void demoSoccerProbabilityWatchTVNonAmericanYougerThan30(FiniteProbabilityModel model){
-    System.out.println("p(~A, A = a1, C , D)");
     
     AssignmentProposition aLikeSoccer = new AssignmentProposition(
 				ExercicioFinalRV.LIKES_SOCCER_RV, Boolean.TRUE);	
@@ -146,13 +145,12 @@ public class Questao1 {
     AssignmentProposition aYoungerThan30 = new AssignmentProposition(
             ExercicioFinalRV.AGE_RV, "a2");      
     
-    System.out.println("p(~A, A = a1, C , D) = "
+    System.out.println("p(C = c1 | A = a2, B = b1, D = d2) = "
             + model.posterior(aLikeSoccer, american,
             aWatchALotTV,aYoungerThan30 ));        
 	}
 
 	public static void constructOver40YearsOldWhoNeverWatchsSportsLikesFutebolNetwork(FiniteProbabilityModel model) {
-		System.out.println("P(C = c1 | A = a3, D = d3) ");
 		AssignmentProposition aLikeSoccer = new AssignmentProposition(ExercicioFinalRV.LIKES_SOCCER_RV, Boolean.TRUE);
 
 		AssignmentProposition aYoungerOver40 = new AssignmentProposition(ExercicioFinalRV.AGE_RV, "a3");
