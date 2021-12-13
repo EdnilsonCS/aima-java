@@ -10,7 +10,7 @@ import aima.core.probability.proposition.AssignmentProposition;
 import aime.projeto.ia.BayesianFactoryPrimeiraQuestao;
 
 public class Questao1 {
-  public static final int NUM_SAMPLES = 10000; 
+  public static final int NUM_SAMPLES = 1000000; 
 
   public static void main(String[] args) {
 
@@ -18,25 +18,34 @@ public class Questao1 {
     //Questão A
     	long tempoInicial = System.currentTimeMillis();
 		bayesGibbsWorldQuestionA();
-		bayesLikelihoodWeightingWorldQuestionA();
 		long tempoFinal = System.currentTimeMillis();
-	    System.out.printf("Tempo de Execu��o ~> %.3f ms%n", (tempoFinal - tempoInicial) / 1000d);
+		System.out.printf("Tempo de Execucao bayesGibbs ~> %.3f ms%n", (tempoFinal - tempoInicial) / 1000d);
+		tempoInicial = System.currentTimeMillis();
+		bayesLikelihoodWeightingWorldQuestionA();
+		tempoFinal = System.currentTimeMillis();
+		System.out.printf("Tempo de Execucao bayesLikelihood ~> %.3f ms%n", (tempoFinal - tempoInicial) / 1000d);
     System.out.println("");
 		System.out.println("-------------------QUESTÃO 1 LETRA B-----------------");
 		//Questão B
 		tempoInicial = System.currentTimeMillis();
 		bayesGibbsWorldQuestionB();
+		tempoFinal = System.currentTimeMillis();
+		System.out.printf("Tempo de Execucao bayesGibbs ~> %.3f ms%n", (tempoFinal - tempoInicial) / 1000d);
+		tempoInicial = System.currentTimeMillis();
 		bayesLikelihoodWeightingQuestionB();
 		tempoFinal = System.currentTimeMillis();
-	    System.out.printf("Tempo de Execu��o ~> %.3f ms%n", (tempoFinal - tempoInicial) / 1000d);
+		System.out.printf("Tempo de Execucao bayesLikelihood ~> %.3f ms%n", (tempoFinal - tempoInicial) / 1000d);
 	System.out.println("");
 		System.out.println("-------------------QUESTÃO 1 LETRA C-----------------");
 		//Questão C
 		tempoInicial = System.currentTimeMillis();
 		bayesGibbsWorldQuestionC();
+		tempoFinal = System.currentTimeMillis();
+		System.out.printf("Tempo de Execucao bayesGibbs ~> %.3f ms%n", (tempoFinal - tempoInicial) / 1000d);
+		tempoInicial = System.currentTimeMillis();
 		bayesLikelihoodWeightingQuestionC();
 		tempoFinal = System.currentTimeMillis();
-	    System.out.printf("Tempo de Execu��o ~> %.3f ms%n", (tempoFinal - tempoInicial) / 1000d);
+	    System.out.printf("Tempo de Execucao bayesLikelihood ~> %.3f ms%n", (tempoFinal - tempoInicial) / 1000d);
   }
 
 

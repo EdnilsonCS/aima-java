@@ -15,13 +15,23 @@ public class Questao2 {
 
 
   public static void main(String[] args) {
-    System.out.println("-------------------QUESTÃO 2 LETRA A-----------------");
-
+    System.out.println("-------------------QUESTÃO 2 -----------------");
+    long tempoInicial = System.currentTimeMillis();
     bayesGibbsRendaFamiliarIgualA3SalariosMinimos();
+    long tempoFinal = System.currentTimeMillis();
+	System.out.printf("Tempo de Execucao bayesGibbsRendaFamiliarIgualA3SalariosMinimos ~> %.3f ms%n", (tempoFinal - tempoInicial) / 1000d);
+	tempoInicial = System.currentTimeMillis();
     bayesGibbsGanharBolsaSendoEstudanteDoEnsinoMedioEscolaPublica();
-    
+    tempoFinal = System.currentTimeMillis();
+    System.out.printf("Tempo de Execucao bayesGibbsGanharBolsaSendoEstudanteDoEnsinoMedioEscolaPublica ~> %.3f ms%n", (tempoFinal - tempoInicial) / 1000d);
+    tempoInicial = System.currentTimeMillis();
     bayesLikelihoodWeightingRendaFamiliarIgualA3SalariosMinimos();
+    tempoFinal = System.currentTimeMillis();
+    System.out.printf("Tempo de Execucao  bayesLikelihoodWeightingRendaFamiliarIgualA3SalariosMinimos ~> %.3f ms%n", (tempoFinal - tempoInicial) / 1000d);
+    tempoInicial = System.currentTimeMillis();
     bayesLikelihoodWeightingGanharBolsaSendoEstudanteDoEnsinoMedioEscolaPublica();
+    tempoFinal = System.currentTimeMillis();
+    System.out.printf("Tempo de Execucao  bayesLikelihoodWeightingGanharBolsaSendoEstudanteDoEnsinoMedioEscolaPublica ~> %.3f ms%n", (tempoFinal - tempoInicial) / 1000d);
   }
 
   public static void bayesLikelihoodWeightingRendaFamiliarIgualA3SalariosMinimos(){
