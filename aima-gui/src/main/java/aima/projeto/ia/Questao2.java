@@ -1,14 +1,14 @@
 
-package aima.gui.demo.probability;
+package aima.projeto.ia;
 
 import aima.core.probability.FiniteProbabilityModel;
 import aima.core.probability.bayes.approx.BayesInferenceApproxAdapter;
 import aima.core.probability.bayes.approx.GibbsAsk;
 import aima.core.probability.bayes.approx.LikelihoodWeighting;
 import aima.core.probability.bayes.model.FiniteBayesModel;
-import aima.core.probability.example.BayesNetExampleFactory;
 import aima.core.probability.example.ExercicioFinalRV;
 import aima.core.probability.proposition.AssignmentProposition;
+import aime.projeto.ia.BayesianFactorySegundaQuestao;
 
 public class Questao2 {
   public static final int NUM_SAMPLES = 100000; 
@@ -29,7 +29,7 @@ public class Questao2 {
 		System.out.println("=====================LIKELIHOOD===================");
     demoBayesGibbsRendaFamiliarIgualA3SalariosMinimos(
 			new FiniteBayesModel(
-				BayesNetExampleFactory.constructBolsaNetwork(),
+				BayesianFactorySegundaQuestao.constructBolsaNetwork(),
 				new BayesInferenceApproxAdapter(new LikelihoodWeighting(), NUM_SAMPLES))
 		);
   }
@@ -40,7 +40,7 @@ public class Questao2 {
 		System.out.println("=====================GIBBS===================");
     demoBayesGibbsRendaFamiliarIgualA3SalariosMinimos(
 			new FiniteBayesModel(
-				BayesNetExampleFactory.constructBolsaNetwork(),
+				BayesianFactorySegundaQuestao.constructBolsaNetwork(),
 				new BayesInferenceApproxAdapter(new GibbsAsk(), NUM_SAMPLES))
 		);
   }
@@ -51,7 +51,7 @@ public class Questao2 {
     System.out.println("=====================LIKELIHOOD===================");
     demoBayesGibbsEstudouEscolaPublica(
 			new FiniteBayesModel(
-				BayesNetExampleFactory.constructBolsaNetwork(),
+				BayesianFactorySegundaQuestao.constructBolsaNetwork(),
 				new BayesInferenceApproxAdapter(new LikelihoodWeighting(), NUM_SAMPLES))
 		);
   }
@@ -61,7 +61,7 @@ public class Questao2 {
 		System.out.println("=====================GIBBS===================");
     demoBayesGibbsEstudouEscolaPublica(
 			new FiniteBayesModel(
-				BayesNetExampleFactory.constructBolsaNetwork(),
+				BayesianFactorySegundaQuestao.constructBolsaNetwork(),
 				new BayesInferenceApproxAdapter(new GibbsAsk(), NUM_SAMPLES))
 		);
   }

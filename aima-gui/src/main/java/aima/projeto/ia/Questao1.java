@@ -1,33 +1,42 @@
-package aima.gui.demo.probability;
+package aima.projeto.ia;
 
 import aima.core.probability.FiniteProbabilityModel;
 import aima.core.probability.bayes.approx.BayesInferenceApproxAdapter;
 import aima.core.probability.bayes.approx.GibbsAsk;
+import aima.core.probability.bayes.approx.LikelihoodWeighting;
 import aima.core.probability.bayes.model.FiniteBayesModel;
-import aima.core.probability.example.BayesNetExampleFactory;
 import aima.core.probability.example.ExercicioFinalRV;
 import aima.core.probability.proposition.AssignmentProposition;
-import aima.core.probability.bayes.approx.LikelihoodWeighting;
+import aime.projeto.ia.BayesianFactoryPrimeiraQuestao;
 
 public class Questao1 {
-  public static final int NUM_SAMPLES = 10000000; 
+  public static final int NUM_SAMPLES = 10000; 
 
   public static void main(String[] args) {
 
     System.out.println("-------------------QUESTÃƒO 1 LETRA A-----------------");
     //QuestÃ£o A
+    	long tempoInicial = System.currentTimeMillis();
 		bayesGibbsWorldQuestionA();
 		bayesLikelihoodWeightingWorldQuestionA();
+		long tempoFinal = System.currentTimeMillis();
+	    System.out.printf("Tempo de Execução ~> %.3f ms%n", (tempoFinal - tempoInicial) / 1000d);
     System.out.println("");
 		System.out.println("-------------------QUESTÃƒO 1 LETRA B-----------------");
 		//QuestÃ£o B
+		tempoInicial = System.currentTimeMillis();
 		bayesGibbsWorldQuestionB();
-    bayesLikelihoodWeightingQuestionB();
-		System.out.println("");
+		bayesLikelihoodWeightingQuestionB();
+		tempoFinal = System.currentTimeMillis();
+	    System.out.printf("Tempo de Execução ~> %.3f ms%n", (tempoFinal - tempoInicial) / 1000d);
+	System.out.println("");
 		System.out.println("-------------------QUESTÃƒO 1 LETRA C-----------------");
 		//QuestÃ£o C
+		tempoInicial = System.currentTimeMillis();
 		bayesGibbsWorldQuestionC();
 		bayesLikelihoodWeightingQuestionC();
+		tempoFinal = System.currentTimeMillis();
+	    System.out.printf("Tempo de Execução ~> %.3f ms%n", (tempoFinal - tempoInicial) / 1000d);
   }
 
 
@@ -38,7 +47,7 @@ public class Questao1 {
 		System.out.println("=====================LIKELIHOOD===================");
     demoSoccerProbabilityNONAmericanYoungerLikesSoccerWatchsSportTV(
 			new FiniteBayesModel(
-				BayesNetExampleFactory.constructAmericanYoungerCatchLikesSoccerWatchsSportTVNetwork(),
+				BayesianFactoryPrimeiraQuestao.constructAmericanYoungerCatchLikesSoccerWatchsSportTVNetwork(),
 				new BayesInferenceApproxAdapter(new LikelihoodWeighting(), NUM_SAMPLES))
 		);
 	}
@@ -50,7 +59,7 @@ public class Questao1 {
 		System.out.println("=====================GIBBS===================");
     demoSoccerProbabilityNONAmericanYoungerLikesSoccerWatchsSportTV(
 			new FiniteBayesModel(
-				BayesNetExampleFactory.constructAmericanYoungerCatchLikesSoccerWatchsSportTVNetwork(),
+				BayesianFactoryPrimeiraQuestao.constructAmericanYoungerCatchLikesSoccerWatchsSportTVNetwork(),
 				new BayesInferenceApproxAdapter(new GibbsAsk(), NUM_SAMPLES))
 		);
 	}
@@ -58,10 +67,10 @@ public class Questao1 {
 	public static void bayesGibbsWorldQuestionB(){
 		System.out.println("DEMO: probability we find a between = " + NUM_SAMPLES);
 		System.out.println("=====================GIBBS===================");
-		System.out.println("P<>(watch tv = true | nonAmerican AND younger than 30)");
+		System.out.println("P(C = c1 | A = a2, B = b1, D = d2) ");
 		demoSoccerProbabilityWatchTVNonAmericanYougerThan30(
 			new FiniteBayesModel(
-				BayesNetExampleFactory.constructAmericanYoungerCatchLikesSoccerWatchsSportTVNetwork(),
+				BayesianFactoryPrimeiraQuestao.constructAmericanYoungerCatchLikesSoccerWatchsSportTVNetwork(),
 				new BayesInferenceApproxAdapter(new GibbsAsk(), NUM_SAMPLES))
 		);
 	}
@@ -70,10 +79,10 @@ public class Questao1 {
   public static void bayesLikelihoodWeightingQuestionB(){
     System.out.println("DEMO: probability we find a between = " + NUM_SAMPLES);
 		System.out.println("=====================LIKELIHOOD===================");
-		System.out.println("P<>(watch tv = true | nonAmerican AND younger than 30)");
+		System.out.println("P(C = c1 | A = a2, B = b1, D = d2) ");
 		demoSoccerProbabilityWatchTVNonAmericanYougerThan30(
 			new FiniteBayesModel(
-				BayesNetExampleFactory.constructAmericanYoungerCatchLikesSoccerWatchsSportTVNetwork(),
+				BayesianFactoryPrimeiraQuestao.constructAmericanYoungerCatchLikesSoccerWatchsSportTVNetwork(),
 				new BayesInferenceApproxAdapter(new LikelihoodWeighting(), NUM_SAMPLES))
 		);
   }
@@ -85,7 +94,7 @@ public class Questao1 {
 		System.out.println("P<>(likes and over40yar AND watchesSports)");
 		constructOver40YearsOldWhoNeverWatchsSportsLikesFutebolNetwork(
 			new FiniteBayesModel(
-				BayesNetExampleFactory.constructAmericanYoungerCatchLikesSoccerWatchsSportTVNetwork(),
+				BayesianFactoryPrimeiraQuestao.constructAmericanYoungerCatchLikesSoccerWatchsSportTVNetwork(),
 				new BayesInferenceApproxAdapter(new GibbsAsk(), NUM_SAMPLES))
 		);
 	}
@@ -96,13 +105,12 @@ public class Questao1 {
 		System.out.println("P<>(likes | over40yar AND watchesSports)");
 		constructOver40YearsOldWhoNeverWatchsSportsLikesFutebolNetwork(
 			new FiniteBayesModel(
-				BayesNetExampleFactory.constructAmericanYoungerCatchLikesSoccerWatchsSportTVNetwork(),
+				BayesianFactoryPrimeiraQuestao.constructAmericanYoungerCatchLikesSoccerWatchsSportTVNetwork(),
 				new BayesInferenceApproxAdapter(new LikelihoodWeighting(), NUM_SAMPLES))
 		);
 	}
 
 	public static void demoSoccerProbabilityNONAmericanYoungerLikesSoccerWatchsSportTV(FiniteProbabilityModel model){
-		System.out.println(" non American, Younger than 30, Likes Soccer , Watch TV");
 		System.out.println("----------------------------------");
 		
 		AssignmentProposition nonAmerican = new AssignmentProposition(
@@ -117,14 +125,14 @@ public class Questao1 {
 		AssignmentProposition aWatchALotTV = new AssignmentProposition(
 					ExercicioFinalRV.WATCH_SOME_RV, "lot");
 
-		System.out.println("P<>(nAmerican, Younger, aLikeSoccer, aWatchALotTV) = "
+		System.out.println("p(~A, A = a1, C , D = d3) = "
 				+ model.prior(nonAmerican,
 				aYoungerThan30,aLikeSoccer,aWatchALotTV));
 
 	}
 
   public static void demoSoccerProbabilityWatchTVNonAmericanYougerThan30(FiniteProbabilityModel model){
-    System.out.println("P<>(LIKES = true | American AND younger between 31-40 AND watch tv = some)");
+    System.out.println("p(~A, A = a1, C , D)");
     
     AssignmentProposition aLikeSoccer = new AssignmentProposition(
 				ExercicioFinalRV.LIKES_SOCCER_RV, Boolean.TRUE);	
@@ -138,25 +146,19 @@ public class Questao1 {
     AssignmentProposition aYoungerThan30 = new AssignmentProposition(
             ExercicioFinalRV.AGE_RV, "a2");      
     
-    System.out.println("P<>(LIKES = true | American AND younger between 31-40 AND watch tv = some) = "
+    System.out.println("p(~A, A = a1, C , D) = "
             + model.posterior(aLikeSoccer, american,
             aWatchALotTV,aYoungerThan30 ));        
 	}
 
-	public static void constructOver40YearsOldWhoNeverWatchsSportsLikesFutebolNetwork(FiniteProbabilityModel model){
-		System.out.println("P<>(LIKES = true AND American AND old over 40 AND watch tv = none)");
-	   
-		AssignmentProposition aLikeSoccer = new AssignmentProposition(
-				ExercicioFinalRV.LIKES_SOCCER_RV, Boolean.TRUE);	
+	public static void constructOver40YearsOldWhoNeverWatchsSportsLikesFutebolNetwork(FiniteProbabilityModel model) {
+		System.out.println("P(C = c1 | A = a3, D = d3) ");
+		AssignmentProposition aLikeSoccer = new AssignmentProposition(ExercicioFinalRV.LIKES_SOCCER_RV, Boolean.TRUE);
 
-				AssignmentProposition aYoungerOver40 = new AssignmentProposition(
-					ExercicioFinalRV.AGE_RV, "a3");   
+		AssignmentProposition aYoungerOver40 = new AssignmentProposition(ExercicioFinalRV.AGE_RV, "a3");
 
-    AssignmentProposition noneWatchTV = new AssignmentProposition(
-					ExercicioFinalRV.WATCH_SOME_RV, "none");
+		AssignmentProposition noneWatchTV = new AssignmentProposition(ExercicioFinalRV.WATCH_SOME_RV, "none");
 
-		System.out.println("P<>(LIKES = true AND American AND old over 40 AND watch tv = none) = "
-					+ model.prior(aLikeSoccer, aYoungerOver40,
-					noneWatchTV )); 
+		System.out.println("P(C = c1 | A = a3, D = d3 )= " + model.posterior(aLikeSoccer, aYoungerOver40, noneWatchTV));
 	}
 }
